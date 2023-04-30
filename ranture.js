@@ -69,7 +69,7 @@ export class RantureArray extends Array{
 	resolve(){
 		if (this.notations.max)
 			return [...this.shuffled.slice(0, random.between(this.notations.min ?? 0, this.notations.max + 1))]
-
+		return [...this]
 	}
 	get single(){
 		return this[getRandomInt(this.length)]
@@ -85,10 +85,13 @@ export class RantureArray extends Array{
 		this.notations.min = min
 		return this
 	}
+	sample(n){
+		return this.shuffled.slice(0, n)
+	}
 }
 
 // let rarr = new RantureArray(2,34,4)
-// console.log(rarr.single)
+// console.log(rarr.sample(2).resolve())
 
 /*
 let u = [1,2,4,5,43,2," fjadsl osad"]
