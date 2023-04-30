@@ -48,3 +48,34 @@ Followed by `key value` fashioned arguments:
 To use `.min(a)` and `.max(b)` both, you should write them in `.min(a).max(b)` 
 fashion since `.max(b)` may return an array with length lower than `a` but 
 `.min(a)` leaves a mark for `.max(b)` if they're in row.
+
+Result of the code snippet above (every run will probably be different)
+```json
+{
+  "pets": [
+    {
+      "pet": "cat",
+      "lifespan": 8,
+      "found": [
+        "asia"
+      ]
+    },
+    {
+      "pet": "dog",
+      "lifespan": 17,
+      "found": [
+        "africa"
+      ]
+    },
+    {
+      "pet": "dog",
+      "lifespan": 22,
+      "found": [
+        "australia",
+        "europe",
+
+      ]
+    }
+  ]
+}
+```
