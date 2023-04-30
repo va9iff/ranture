@@ -39,6 +39,3 @@ Followed by `key value` fashioned arguments:
 To use `.min(a)` and `.max(b)` both, you should write them in `.min(a).max(b)` 
 fashion since `.max(b)` may return an array with length lower than `a` but 
 `.min(a)` leaves a mark for `.max(b)` if they're in row.
-
-> TODO: currently `RantureArray` works with unique unique results. Add way to 
-get arrays with repeatable items.
