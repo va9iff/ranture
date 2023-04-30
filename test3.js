@@ -11,7 +11,7 @@ let rarr = new RantureArray(10,88,34,12,42,15)
 
 let test = i => {
 	console.log(ranture({
-		k: rarr.min(3)
+		k: rarr.min(3).max(6)
 	}))
 }
 

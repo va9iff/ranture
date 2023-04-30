@@ -26,14 +26,12 @@ export const random = {
 	number(max = 100) {
 		return getRandomInt(max)
 	},
-	between(min, max){
-		if (!(min&&max)) throw new Error("random.between requires 2 arguments (min, max)")
+	between(min=0, max=0){
 		return getRandomIntBetween(min, max)
 	}
 }
 
 export const ranture = obj => {
-	// console.log('---',obj)
 	if (typeof obj != 'object') return obj
 	for (let [prop, val] of Object.entries(obj)) {
 		let optsStrings = prop.split(/\s+/)
@@ -57,9 +55,13 @@ export const ranture = obj => {
 			obj[prop] = val.resolve()
 		}
 	}
-
 	return obj
 }
+
+let minmaxOrderError = (min, max) => `if both used .min() should come right before .max()
+suggestion to use both: .min(${min}).max(${max})`
+
+let biggerMinError = `.min() got lower value than length; using .max() before .min() can cause it.`
 
 export class RantureArray extends Array{
 	notations = {}
@@ -67,14 +69,6 @@ export class RantureArray extends Array{
 		super(...items)
 	}
 	resolve(){
-		const { max, min } = this.notations
-		if (max && min)
-			return [...this.shuffled.slice(0, random.between(min ?? 0, max + 1))]
-		if (max && !min)
-			return [...this.shuffled.slice(0, random.number(max))]
-		if (!max && min)
-			return [...this.shuffled.slice(0, random.between(min, this.length + 1))]
-
 		return [...this]
 	}
 	get single(){
@@ -83,13 +77,17 @@ export class RantureArray extends Array{
 	get shuffled(){
 		return this.sort(() => 0.5 - Math.random())
 	}
-	max(max){
-		this.notations.max = max
-		return this
+	max(max = this.length){
+		let result = this.shuffled.slice(0, random.between(this.minCalled ?? 0, max + 1))
+		result.maxCalled = max
+		return result
 	}
-	min(min){
-		this.notations.min = min
-		return this
+	min(min = 0){
+		if (min>this.length) console.warn(biggerMinError)
+		let result = this.shuffled.slice(0, random.between(min, this.length + 1))
+		result.minCalled = min
+		if (this.maxCalled) console.warn(minmaxOrderError(min, this.maxCalled))
+		return result
 	}
 	sample(n){
 		return this.shuffled.slice(0, n)
