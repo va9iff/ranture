@@ -1,4 +1,4 @@
-let intKeys = ["min", "max", "to", "from", "salt"]
+let separators = ["min", "max", "to", "from", "salt"]
 
 export const range = (b = 1, a = 0) => [...Array(b - a).keys()].map(i => i + a)
 
@@ -40,12 +40,9 @@ export const ranture = obj => {
 		let propName = optsStrings[0]
 		let opts = {}
 
-		for (let [i, optsString] of optsStrings.entries()) {
-			let key = optsStrings[i]
-			if (intKeys.includes(key)) {
-				opts[key] = parseInt(optsStrings[i + 1])
-			}
-		}
+		for (let [i, optsString] of optsStrings.entries()) 
+			if (separators.includes(optsString))
+				opts[optsString] = parseInt(optsStrings[i + 1])
 
 		if (opts.to || opts.max) {
 			let to = opts.to
@@ -67,7 +64,7 @@ export const ranture = obj => {
 // that's actually not an array. just simple notations to resolve the array.
 // arr.single will note to resolve into one random elements from the given 
 // array in the ranture() mock object.
-class RantureArray{
+/*class RantureArray{
 	notations = {}
 	constructor(arr){
 		this.arr = arr
@@ -110,8 +107,27 @@ class RantureArray{
 		this.notations.salt = arg
 		return this
 	}
+}*/
 
+
+export class RantureArray extends Array{
+	notations = {}
+	constructor(...items){
+		super(...items)
+	}
+	get single(){
+		this.notations.single = true
+		return this
+	}
+	resolve(){
+		if (this.notations.single) 
+			return this[getRandomInt(this.length)]
+
+	}
 }
+
+// let rarr = new RantureArray(2,34,4)
+// console.log(rarr)
 
 /*
 let u = [1,2,4,5,43,2," fjadsl osad"]
