@@ -115,18 +115,31 @@ export class RantureArray extends Array{
 	constructor(...items){
 		super(...items)
 	}
+	resolve(){
+		if (this.notations.single) 
+			return this[getRandomInt(this.length)]
+		if (this.notations.max)
+			return [...this.shuffled.slice(0, random.between(this.notations.min ?? 0, this.notations.max + 1))]
+
+	}
 	get single(){
 		this.notations.single = true
 		return this
 	}
-	resolve(){
-		if (this.notations.single) 
-			return this[getRandomInt(this.length)]
-
+	get shuffled(){
+		return this.sort(() => 0.5 - Math.random())
+	}
+	max(max){
+		this.notations.max = max
+		return this
+	}
+	min(min){
+		this.notations.min = min
+		return this
 	}
 }
 
-// let rarr = new RantureArray(2,34,4)
+let rarr = new RantureArray(2,34,4)
 // console.log(rarr)
 
 /*
