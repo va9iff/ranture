@@ -15,7 +15,7 @@ pets = new RantureArray(...pets)
 places = new RantureArray(...places)
 
 let mock = ranture({
-	"pets from 8 to 15 salt 3": lifespan => ({
+	"pets from 7 to 22 step 7 salt 5 ": lifespan => ({
 		pet: pets.single,
 		lifespan,
 		found: places.min(1).max(4)
@@ -34,6 +34,7 @@ Followed by `key value` fashioned arguments:
 - `to` iterator goes up to this
 - `max` iterator goes up to a random number less than (<=) this
 - `salt` maximum ± random number to add to the iterator every run
+- `step` every iteration iterator increased by this value
 
 
 # `RantureArray`

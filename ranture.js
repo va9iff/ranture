@@ -1,8 +1,8 @@
-let separators = ["min", "max", "to", "from", "salt"]
+let separators = ["min", "max", "to", "from", "salt", "step"]
 
-export const range = (b = 1, a = 0) => {
-	return [...Array(b - a).keys()].map(i => i + a)
-}
+// export const range = (b = 1, a = 0) => {
+	// return [...Array(b - a).keys()].map(i => i + a)
+// }
 
 function getRandomInt(max) {
 	return Math.floor(Math.random() * max)
@@ -47,7 +47,12 @@ export const ranture = obj => {
 		if (opts.to || opts.max) {
 			opts.to ??= opts.from ? random.between(opts.from+1, opts.max+1) : opts.min ? random.between(opts.min+1, opts.max+1) : 1
 			opts.from ??= opts.min?random.between(opts.min, opts.to+1) : 0
-			obj[propName] = range(opts.to+1, opts.from).map(i=>i+=opts.salt?getRandomInt(opts.salt):0).map(val)
+			let arr = []
+			for (let i=opts.from; i<opts.to; i+=opts.step||1){
+				arr.push(i)
+			}
+			// obj[propName] = range(opts.to+1, opts.from).map(i=>i+=opts.salt?getRandomInt(opts.salt):0).map(val)
+			obj[propName] = arr.map(i=>i+=opts.salt?getRandomInt(opts.salt):0).map(val)
 			for (let innerObj of obj[propName]) ranture(innerObj)
 			delete obj[prop]
 			if (obj[propName].every(_ => !_))

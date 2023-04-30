@@ -8,7 +8,7 @@ pets = new RantureArray(...pets)
 places = new RantureArray(...places)
 
 let mock = ranture({
-	"pets from 8 to 15 salt 3": lifespan => ({
+	"pets from 7 to 22 step 7 salt 5 ": lifespan => ({
 		pet: pets.single,
 		lifespan,
 		found: places.min(1).max(4)
