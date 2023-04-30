@@ -5,17 +5,24 @@ structures, nested arrays, etc.
 It uses property names as arguments to have a cleaner syntax:
 
 ```js
+import { ranture, random, RantureArray } from "./ranture.js"
+
+
 let pets = ['cat', 'dog', 'fish']
 let places = ['europe', 'asia', 'america', 'africa', 'australia', 'antarctica']
 
-ranturize(pets, places)
-ranture({
-	"myNum from 8 to 10 salt 3": i => ({
-		title: `number: ${i}`,
+pets = new RantureArray(...pets)
+places = new RantureArray(...places)
+
+let mock = ranture({
+	"myNum from 8 to 10 salt 5": i => ({
 		pet: pets.single,
-		foundIn: places.max(2)
+		lifespan: i,
+		found: places.min(1).max(2)
 	})
 })
+
+console.log(JSON.stringify(mock, 0, 2))
 ```
 
 The first word before space is actual property's name.

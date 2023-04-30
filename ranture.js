@@ -104,7 +104,7 @@ export class RantureArray extends Array{
 }
 
 let rarr = new RantureArray(2,34,4,32,4,1,3,6)
-console.log(rarr.repeatable)
+// console.log(rarr.repeatable)
 
 /*
 let u = [1,2,4,5,43,2," fjadsl osad"]
