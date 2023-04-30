@@ -73,7 +73,6 @@ Result of the code snippet above (every run will probably be different)
       "found": [
         "australia",
         "europe",
-
       ]
     }
   ]
