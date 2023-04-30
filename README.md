@@ -20,6 +20,7 @@ ranture({
 
 The first word before space is actual property's name.
 Followed by `key value` fashioned arguments:
+# Loop Keywords
 - `from` iterator starts from this
 - `min` iterator starts from a random number greater than (>=) this
 - `to` iterator goes up to this
@@ -27,3 +28,13 @@ Followed by `key value` fashioned arguments:
 - `salt` maximum ± random number to add to the iterator every run
 
 
+# `RantureArray`
+- `.single` returns a random element
+- `.shuffled` returns a its shuflled version
+- `.sample(n)` returns a sample from it with `n` numbers of elements
+- `.min(n)` returns random sample with length greater than n
+- `.max(n)` returns random sample with length less than n
+
+To use `.min(a)` and `.max(b)` both, you should write them in `.min(a).max(b)` 
+fashion since `.max(b)` may return an array with length lower than `a` but 
+`.min(a)` leaves a mark for `.max(b)` if they're in row.
