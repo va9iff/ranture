@@ -30,7 +30,8 @@ Followed by `key value` fashioned arguments:
 
 # `RantureArray`
 - `.single` returns a random element
-- `.shuffled` returns a its shuflled version
+- `.shuffled` returns its shuflled version
+- `.repeatable` returns its shuffled version that can has duplicates
 - `.sample(n)` returns a sample from it with `n` numbers of elements
 - `.min(n)` returns random sample with length greater than n
 - `.max(n)` returns random sample with length less than n

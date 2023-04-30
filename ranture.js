@@ -94,10 +94,17 @@ export class RantureArray extends Array{
 	sample(n){
 		return this.shuffled.slice(0, n)
 	}
+	get repeatable(){
+		let preserved = [...this]
+		for (let i of this.keys()){
+			this[i] = preserved[getRandomInt(this.length)]
+		}
+		return this
+	}
 }
 
-// let rarr = new RantureArray(2,34,4)
-// console.log(rarr.sample(2).resolve())
+let rarr = new RantureArray(2,34,4,32,4,1,3,6)
+console.log(rarr.repeatable)
 
 /*
 let u = [1,2,4,5,43,2," fjadsl osad"]
