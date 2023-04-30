@@ -15,15 +15,16 @@ pets = new RantureArray(...pets)
 places = new RantureArray(...places)
 
 let mock = ranture({
-	"myNum from 8 to 10 salt 5": i => ({
+	"pets from 8 to 15 salt 3": lifespan => ({
 		pet: pets.single,
-		lifespan: i,
-		found: places.min(1).max(2)
+		lifespan,
+		found: places.min(1).max(4)
 	})
 })
 
 console.log(JSON.stringify(mock, 0, 2))
 ```
+Pets with lifespans from little to much.
 
 The first word before space is actual property's name.
 Followed by `key value` fashioned arguments:
