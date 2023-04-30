@@ -61,70 +61,18 @@ export const ranture = obj => {
 	return obj
 }
 
-// that's actually not an array. just simple notations to resolve the array.
-// arr.single will note to resolve into one random elements from the given 
-// array in the ranture() mock object.
-/*class RantureArray{
-	notations = {}
-	constructor(arr){
-		this.arr = arr
-	}
-	resolve(){
-		if (this.notations.single) return this.resolveSingle()
-		return this.arr
-	}
-	shokola(){
-		console.log('shokooooooo')
-	}
-	get single(){
-		this.notations.single = true
-		return this
-	}
-	resolveSingle(){
-		return this.arr[getRandomInt(this.arr.length)]
-	}
-	filter(...args){
-		this.arr = this.arr.filter(...args)
-		return this
-	}
-	max(arg){
-		this.notations.max = arg
-		return this
-	}
-	min(arg){
-		this.notations.min = arg
-		return this
-	}
-	to(arg){
-		this.notations.to = arg
-		return this
-	}
-	from(arg){
-		this.notations.from = arg
-		return this
-	}
-	salt(arg){
-		this.notations.salt = arg
-		return this
-	}
-}*/
-
-
 export class RantureArray extends Array{
 	notations = {}
 	constructor(...items){
 		super(...items)
 	}
 	resolve(){
-		if (this.notations.single) 
-			return this[getRandomInt(this.length)]
 		if (this.notations.max)
 			return [...this.shuffled.slice(0, random.between(this.notations.min ?? 0, this.notations.max + 1))]
 
 	}
 	get single(){
-		this.notations.single = true
-		return this
+		return this[getRandomInt(this.length)]
 	}
 	get shuffled(){
 		return this.sort(() => 0.5 - Math.random())
@@ -139,8 +87,8 @@ export class RantureArray extends Array{
 	}
 }
 
-let rarr = new RantureArray(2,34,4)
-// console.log(rarr)
+// let rarr = new RantureArray(2,34,4)
+// console.log(rarr.single)
 
 /*
 let u = [1,2,4,5,43,2," fjadsl osad"]
