@@ -67,8 +67,14 @@ export class RantureArray extends Array{
 		super(...items)
 	}
 	resolve(){
-		if (this.notations.max)
-			return [...this.shuffled.slice(0, random.between(this.notations.min ?? 0, this.notations.max + 1))]
+		const { max, min } = this.notations
+		if (max && min)
+			return [...this.shuffled.slice(0, random.between(min ?? 0, max + 1))]
+		if (max && !min)
+			return [...this.shuffled.slice(0, random.number(max))]
+		if (!max && min)
+			return [...this.shuffled.slice(0, random.between(min, this.length + 1))]
+
 		return [...this]
 	}
 	get single(){
