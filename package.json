@@ -1,3 +1,26 @@
 {
-	"type": "module"
+  "name": "ranture",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "custom random loops and declaratively structured mock object creations",
+  "main": "ranture.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/va9iff/ranture.git"
+  },
+  "keywords": [
+    "structured",
+    "random",
+    "loop",
+    "mock"
+  ],
+  "author": "va9iff",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/va9iff/ranture/issues"
+  },
+  "homepage": "https://github.com/va9iff/ranture#readme"
 }
