@@ -1,4 +1,4 @@
-import { ranture, random, RantureArray } from "./ranture.js"
+import { ranture, random, RantureArray } from "../ranture.js"
 
 let rarr = new RantureArray(10,88,34,12,42,15)
 

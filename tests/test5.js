@@ -1,4 +1,4 @@
-import { ranture, random, RantureArray } from "./ranture.js"
+import { ranture, random, RantureArray } from "../ranture.js"
 
 
 let pets = ['cat', 'dog', 'fish']

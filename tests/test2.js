@@ -1,4 +1,4 @@
-import {ranture} from "./ranture.js"
+import {ranture} from "../ranture.js"
 
 // let pets = ['cat', 'dog', 'fish']
 // let places = ['europe', 'asia', 'america', 'africa', 'australia', 'antarctica']

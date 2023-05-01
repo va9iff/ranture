@@ -1,4 +1,4 @@
-import { ranture, random } from "./ranture.js"
+import { ranture, random } from "../ranture.js"
 
 let itemToLog = ranture({
 	"hi min  10 to 11 salt 5": aa => ({
